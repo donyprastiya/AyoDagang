@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "410075810868",
+    "project_id": "ayo-dagang",
+    "storage_bucket": "ayo-dagang.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410075810868:android:f65f1e837eb8ccfe754e61",
+        "android_client_info": {
+          "package_name": "com.example.ayodagang"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "410075810868-hvkgvm0da6cbgiq3nh1p98hl85kn8fls.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkwu2u-3A6L7vQEmIDShR4PlDnB5rdkaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "410075810868-hvkgvm0da6cbgiq3nh1p98hl85kn8fls.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
