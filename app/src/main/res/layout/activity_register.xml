@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login1Activity"
+    tools:context=".RegisterActivity"
     android:orientation="vertical">
-
 
     <EditText
         android:id="@+id/edt_username"
@@ -19,7 +18,28 @@
         tools:targetApi="o" />
 
     <EditText
-        android:id="@+id/edt_password"
+        android:id="@+id/edt_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="@string/phone"
+        android:importantForAutofill="no"
+        android:inputType="phone"
+        tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/edt_email_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginBottom="8dp"
+        android:hint="@string/email"
+        android:importantForAutofill="no"
+        android:inputType="textEmailAddress"
+        tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/edt_password_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -29,27 +49,13 @@
         tools:targetApi="o" />
 
     <Button
-        android:id="@+id/btn_coba"
+        android:id="@+id/btn_sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_margin="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/cardview_light_background"
-        android:text="@string/login"
-        android:textColor="@android:color/white" />
-
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:background="@color/cardview_light_background"
         android:text="@string/title_activity_register"
         android:textColor="@android:color/white" />
-
-
 
 </LinearLayout>

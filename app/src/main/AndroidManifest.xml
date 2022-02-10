@@ -12,10 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AyoDagang">
         <activity
-            android:name=".MainActivity"
+            android:name=".Login1Activity"
             android:exported="false" />
         <activity
-            android:name=".Login1Activity"
+            android:name=".Staff"
+            android:exported="false" />
+        <activity
+            android:name=".Admin"
+            android:exported="false" />
+        <activity
+            android:name=".LoginStaff"
+            android:exported="false" />
+        <activity
+            android:name=".LoginAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".CheckLogin"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +35,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

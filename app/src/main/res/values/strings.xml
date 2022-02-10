@@ -4,4 +4,6 @@
     <string name="password">password</string>
     <string name="login">Login</string>
     <string name="title_activity_register">register</string>
+    <string name="username">username</string>
+    <string name="phone">phone number</string>
 </resources>
