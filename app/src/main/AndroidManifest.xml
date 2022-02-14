@@ -6,11 +6,41 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ayodagang"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ayodagang"
         android:supportsRtl="true"
         android:theme="@style/Theme.AyoDagang">
+        <activity
+            android:name=".PlaLogin"
+            android:exported="false" />
+        <activity
+            android:name=".DetailProduk"
+            android:exported="false" />
+        <activity
+            android:name=".ListProduk"
+            android:exported="false" />
+        <activity
+            android:name=".CategoryShop"
+            android:exported="false" />
+        <activity
+            android:name=".CategoryElectronic"
+            android:exported="false" />
+        <activity
+            android:name=".CategoryClothing"
+            android:exported="false" />
+        <activity
+            android:name=".CategoryGander"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterBarang"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterStaff"
+            android:exported="false" />
+        <activity
+            android:name=".LoginUser"
+            android:exported="false" />
         <activity
             android:name=".Login1Activity"
             android:exported="false" />
@@ -22,9 +52,6 @@
             android:exported="false" />
         <activity
             android:name=".LoginStaff"
-            android:exported="false" />
-        <activity
-            android:name=".LoginAdmin"
             android:exported="false" />
         <activity
             android:name=".CheckLogin"

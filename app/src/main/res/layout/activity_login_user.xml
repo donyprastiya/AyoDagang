@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#073042"
-    tools:context=".LoginStaff">
+    tools:context=".LoginUser">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,14 +35,6 @@
                 android:orientation="vertical"
                 android:padding="10dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="STAFF"
-                    android:textSize="25dp"
-                    android:textColor="#073042"
-                    android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -54,11 +46,11 @@
                         android:id="@+id/edt_username"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:drawableStart="@drawable/ic_baseline_account_circle_24"
-                        android:drawableLeft="@drawable/ic_baseline_account_circle_24"
+                        android:drawableStart="@drawable/ic_baseline_local_phone_24"
+                        android:drawableLeft="@drawable/ic_baseline_local_phone_24"
                         android:drawablePadding="8dp"
-                        android:hint="Username"
-                        android:inputType="text" />
+                        android:hint="Phone Number"
+                        android:inputType="phone" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -106,26 +98,49 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/loginUser1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Don't have an account? "
+                        android:textColor="#073042" />
+
+                    <TextView
+                        android:id="@+id/txtSignUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="register"
+                        android:text="Sign Up"
+                        android:textColor="#073042"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/loginAdmin2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:onClick="userLogin"
-                        android:text="Sign in as User"
+                        android:text="Sign in as Admin"
                         android:textColor="#073042"
                         android:textStyle="bold" />
                     <TextView
-                        android:id="@+id/loginAdmin1"
+                        android:id="@+id/loginStaff2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:onClick="staffLogin"
-                        android:text="Sign in as Admin"
+                        android:text="Sign in as Staff"
                         android:textColor="#073042"
                         android:textStyle="bold" />
-
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

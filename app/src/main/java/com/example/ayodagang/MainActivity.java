@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private Button btnLogOut;
     private FirebaseFirestore fStore;
-    private static ArrayList<String> mArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,39 +41,29 @@ public class MainActivity extends AppCompatActivity {
         TextView tvUser = findViewById(R.id.tv_user);
         tvUser.setText(" "+uid);
 
-//        getData();
+        logout();
 
     }
 
-    private void getData() {
-        Bundle bundle = getIntent().getBundleExtra("emailpass");
-        String email = bundle.getString("email");
-        String password = bundle.getString("pass");
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user = auth.getCurrentUser();
+        if (user == null){
+            startActivity(new Intent(MainActivity.this, Login1Activity.class));
+        }
 
-        fStore.collection("Users").whereEqualTo("email", email).get()
-        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+    }
+
+
+    public void logout() {
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        Toast.makeText(MainActivity.this,
-                                document.getId() + "INI DATA " + document.getData()
-                                , Toast.LENGTH_LONG).show();
-                    }
-                } else {
-                    Toast.makeText(MainActivity.this,
-                            "ERROR SOB "
-                            , Toast.LENGTH_LONG).show();
-                }
+            public void onClick(View view) {
+                auth.signOut();
+                startActivity(new Intent(MainActivity.this, Login1Activity.class));
             }
         });
-
     }
-
-
-    public void logout(View view) {
-        auth.signOut();
-    }
-
 
 }

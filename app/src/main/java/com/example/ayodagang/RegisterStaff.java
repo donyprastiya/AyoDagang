@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,25 +26,25 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterStaff extends AppCompatActivity {
 
     private EditText edtEmail,edtPassword;
     private EditText editUsername,editPhone;
-    private MaterialCardView btnRegis;
+    private MaterialCardView btnSubmit;
     private FirebaseAuth auth;
     private FirebaseFirestore fStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_register_staff);
 
         initView();
         registerUser();
     }
 
     private void registerUser() {
-        btnRegis.setOnClickListener(new View.OnClickListener() {
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //menampung imputan user
@@ -86,7 +85,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 for(DocumentSnapshot documentSnapshot : task.getResult()){
                                     String userCheck = documentSnapshot.getString("userName");
                                     if(userCheck.equals(userName)){
-                                        Toast.makeText(RegisterActivity.this, "USERNAME UDAH ADA!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterStaff.this, "USERNAME SUDAH ADA!", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }
@@ -101,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             for(DocumentSnapshot documentSnapshot : task.getResult()){
                                                 String phoneCheck = documentSnapshot.getString("phone");
                                                 if(phoneCheck.equals(phone)){
-                                                    Toast.makeText(RegisterActivity.this, "NOMOR UDAH ADA!", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(RegisterStaff.this, "NOMOR UDAH ADA!", Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         }
@@ -128,12 +127,12 @@ public class RegisterActivity extends AppCompatActivity {
         String phone = editPhone.getText().toString().trim();
 
         auth.createUserWithEmailAndPassword(emailUser,passwordUser)
-                .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(RegisterStaff.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //jika gagal register do something
                         if (!task.isSuccessful()){
-                            Toast.makeText(RegisterActivity.this,
+                            Toast.makeText(RegisterStaff.this,
                                     "Register gagal karena "+ task.getException().getMessage(),
                                     Toast.LENGTH_LONG).show();
                         }else {
@@ -146,30 +145,29 @@ public class RegisterActivity extends AppCompatActivity {
                             userInfo.put("userName", userName);
                             userInfo.put("phone", phone);
                             //ROLE USER
-                            userInfo.put("role", "3");
+                            userInfo.put("role", "2");
 
                             df.set(userInfo);
 
 
-                            Toast.makeText(RegisterActivity.this,
-                                    "Register berhasil silakan login!",
+                            Toast.makeText(RegisterStaff.this,
+                                    "Membuat staff baru berhasil!",
                                     Toast.LENGTH_LONG).show();
                             //jika sukses akan menuju ke login activity
-                            startActivity(new Intent(RegisterActivity.this,LoginUser.class));
+                            startActivity(new Intent(RegisterStaff.this,RegisterStaff.class));
                         }
                     }
                 });
     }
 
     private void initView() {
-        edtEmail = findViewById(R.id.edt_email_register4);
-        edtPassword = findViewById(R.id.edt_password_register4);
-        btnRegis = findViewById(R.id.btn_sign_up4);
+        edtEmail = findViewById(R.id.edt_email_register5);
+        edtPassword = findViewById(R.id.edt_password_register5);
+        btnSubmit = findViewById(R.id.btnSubmitStaff);
         auth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        editUsername = findViewById(R.id.edt_username4);
-        editPhone = findViewById(R.id.edt_phone4);
+        editUsername = findViewById(R.id.edt_username5);
+        editPhone = findViewById(R.id.edt_phone5);
 
     }
-
 }

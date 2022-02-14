@@ -9,11 +9,13 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -26,7 +28,8 @@ public class Login1Activity extends AppCompatActivity {
 
     private EditText edtEmail, edtPassword, edtUserName;
     private String emailget;
-    private Button btnRegister, btnCoba;
+    private TextView btnLoginUser, btnLoginStaff;
+    private MaterialCardView btnCoba;
     private FirebaseAuth auth;
     private FirebaseFirestore fStore;
 
@@ -36,7 +39,6 @@ public class Login1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_login1);
 
         initView();
-        register();
         coba();
 
     }
@@ -46,36 +48,45 @@ public class Login1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final String userName = edtUserName.getText().toString().trim();
+                final String passwordUser = edtPassword.getText().toString().trim();
 
+                if (userName.isEmpty()) {
+                    edtUserName.setError("Username tidak boleh kosong");
+                }
+                // jika password kosong
+                else if (passwordUser.isEmpty()) {
+                    edtPassword.setError("Password tidak boleh kosong");
+                } else {
                 fStore.collection("Users").whereEqualTo("userName", userName).get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                   @Override
+                                                   public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
-                                if (task.isSuccessful()) {
-                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                                       if (task.isSuccessful()) {
+                                                           for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                        emailget = document.getString("email");
-                                        if (emailget != null) {
+                                                               emailget = document.getString("email");
+                                                               if (emailget != null) {
 
-                                            loginadmin(emailget);
-                                        } else {
-                                            Toast.makeText(Login1Activity.this,
-                                                    "Login Tidak Berhasil!"
-                                                    , Toast.LENGTH_LONG).show();
-                                        }
-                                    }
+                                                                   loginadmin(emailget);
+                                                               } else {
+                                                                   Toast.makeText(Login1Activity.this,
+                                                                           "1 Login Tidak Berhasil!" + task.getException()
+                                                                           , Toast.LENGTH_LONG).show();
+                                                               }
+                                                           }
 
-                                } else {
+                                                       } else {
 
-                                        Toast.makeText(Login1Activity.this,
-                                                " Login Tidak Berhasil!"
-                                                , Toast.LENGTH_LONG).show();
-                                    }
-                                }
+                                                           Toast.makeText(Login1Activity.this,
+                                                                   "2 Login Tidak Berhasil!" + task.getException()
+                                                                   , Toast.LENGTH_LONG).show();
+                                                       }
+                                                   }
 
-                            }
+                                               }
                         );
+                }
             }
         });
     }
@@ -102,19 +113,6 @@ public class Login1Activity extends AppCompatActivity {
                 });
     }
 
-    private void register() {
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Login1Activity.this, RegisterActivity.class);
-                startActivity(intent);
-
-
-            }
-        });
-
-    }
-
     private void checkUser(String uid) {
         DocumentReference df = fStore.collection("Users").document(uid);
 
@@ -124,15 +122,16 @@ public class Login1Activity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.getString("role").equals("1")) {
-                        Intent intent = new Intent(Login1Activity.this, MainActivity.class).putExtra("uid", uid);
+                        Intent intent = new Intent(Login1Activity.this, Admin.class).putExtra("uid", uid);
                         startActivity(intent);
                         finish();
                     } else {
                         Toast.makeText(Login1Activity.this,
-                                "Tidak ada Dokumen"
+                                "Anda bukan admin!"
                                 , Toast.LENGTH_LONG).show();
                     }
                 } else {
+                    auth.signOut();
                     Toast.makeText(Login1Activity.this,
                             "DocumentSnapshot data: " + task.getException()
                             , Toast.LENGTH_LONG).show();
@@ -144,58 +143,34 @@ public class Login1Activity extends AppCompatActivity {
     private void initView() {
         edtPassword = findViewById(R.id.edt_password);
         edtUserName = findViewById(R.id.edt_username);
-        btnCoba = findViewById(R.id.btn_coba);
-        btnRegister = findViewById(R.id.btn_register);
+        btnCoba = findViewById(R.id.btnLogin);
+        btnLoginStaff = findViewById(R.id.loginStaff);
+        btnLoginUser = findViewById(R.id.loginUser);
         auth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
     }
 
-//    private void login() {
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //menampung imputan user
-//                final String emailUser = edtEmail.getText().toString().trim();
-//                final String passwordUser = edtPassword.getText().toString().trim();
+
+    public void userLogin(View view) {
+        btnLoginUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login1Activity.this, LoginUser.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void staffLogin(View view) {
+        btnLoginStaff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login1Activity.this, LoginStaff.class);
+                startActivity(intent);
+            }
+        });
+    }
+
 //
-//                //validasi email dan password
-//                // jika email kosong
-//                if (emailUser.isEmpty()) {
-//                    edtEmail.setError("Email tidak boleh kosong");
-//                }
-//                // jika email not valid
-//                else if (!Patterns.EMAIL_ADDRESS.matcher(emailUser).matches()) {
-//                    edtEmail.setError("Email tidak valid");
-//                }
-//                // jika password kosong
-//                else if (passwordUser.isEmpty()) {
-//                    edtPassword.setError("Password tidak boleh kosong");
-//                }
-//                //jika password kurang dari 6 karakter
-//                else if (passwordUser.length() < 6) {
-//                    edtPassword.setError("Password minimal terdiri dari 6 karakter");
-//                } else {
-//                    auth.signInWithEmailAndPassword(emailUser, passwordUser)
-//                            .addOnCompleteListener(Login1Activity.this, new OnCompleteListener<AuthResult>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<AuthResult> task) {
-//                                    // ketika gagal locin maka akan do something
-//                                    if (!task.isSuccessful()) {
-//                                        Toast.makeText(Login1Activity.this,
-//                                                "Gagal login karena " + task.getException().getMessage()
-//                                                , Toast.LENGTH_LONG).show();
-//                                    } else {
-//                                        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//                                        checkUser(uid);
-////
-//                                    }
-//                                }
-//                            });
-//                }
-//            }
-//        });
-//    }
-
-
 
 }

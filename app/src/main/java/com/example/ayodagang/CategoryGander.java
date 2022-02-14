@@ -1,62 +1,55 @@
 package com.example.ayodagang;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class Admin extends AppCompatActivity {
+public class CategoryGander extends AppCompatActivity {
 
     private FirebaseAuth auth;
-    private MaterialCardView btnAddStaff, btnEditQty;
+    private MaterialCardView btnMen, btnWomen;
     private FirebaseFirestore fStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin);
+        setContentView(R.layout.activity_category_gander);
 
         initView();
-        addStaff();
-        editItem();
+        toMen();
+        toeWomen();
     }
-
-
 
     private void initView() {
         auth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        btnAddStaff = findViewById(R.id.btnAddStaff);
-        btnEditQty = findViewById(R.id.btnEditQty);
+        btnMen = findViewById(R.id.btnMen);
+        btnWomen = findViewById(R.id.btnWomen);
     }
-
-
-    private void addStaff() {
-        btnAddStaff.setOnClickListener(new View.OnClickListener() {
+    private void toMen() {
+        btnMen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Admin.this, RegisterStaff.class);
+                String type = "men";
+                Intent intent = new Intent(CategoryGander.this, CategoryClothing.class).putExtra("type", type);
                 startActivity(intent);
             }
         });
     }
-
-    private void editItem() {
-        btnEditQty.setOnClickListener(new View.OnClickListener() {
+    private void toeWomen() {
+        btnWomen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Admin.this, RegisterBarang.class);
+                String type = "women";
+                Intent intent = new Intent(CategoryGander.this, CategoryClothing.class).putExtra("type", type);
                 startActivity(intent);
             }
         });
     }
-
-
 }

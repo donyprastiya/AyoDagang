@@ -3,9 +3,39 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_login1.xml" value="0.2703125" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/drawable-v24/ic_launcher_background.xml" value="0.1245" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.345" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/drawable-v24/ic_lock_outline.xml" value="0.345" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/drawable-v24/ic_mail_outline.xml" value="0.345" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/drawable/ic_arrow_back_white.xml" value="0.1475" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.345" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/drawable/ic_baseline_local_phone_24.xml" value="0.345" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/drawable/ic_launcher_background.xml" value="0.345" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_admin.xml" value="0.36141304347826086" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_categori1.xml" value="0.25" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_category_clothing.xml" value="0.1875" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_category_electronic.xml" value="0.1875" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_category_gander.xml" value="0.1875" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_category_shop.xml" value="0.1875" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_category_user.xml" value="0.1875" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_check_login.xml" value="0.18" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_detail_produk.xml" value="0.25" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_list_produk.xml" value="0.1875" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_login1.xml" value="0.25" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_login_admin.xml" value="0.36141304347826086" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_login_staff.xml" value="0.2" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_login_user.xml" value="0.1" />
         <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_pla_login.xml" value="0.2" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_regis_barang.xml" value="0.2708333333333333" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_regis_staff.xml" value="0.2708333333333333" />
         <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_register.xml" value="0.36666666666666664" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_register_barang.xml" value="0.1875" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_register_staff.xml" value="0.25" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/activity_staff.xml" value="0.36141304347826086" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/layout/listproduk.xml" value="0.1875" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.143" />
+        <entry key="..\:/Android Studio/AyoDagang/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.143" />
       </map>
     </option>
   </component>
